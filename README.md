@@ -10,6 +10,8 @@ Curso propedéutico para estudiantes de posgrado en ciencias sociales **sin expe
 
 🌐 **[Sitio del curso](https://franperezec.github.io/propedeutico-flacso/)** — todos los materiales (notebooks, manuales y aplicaciones) en una sola página.
 
+📝 **[Pizarra de clase (Miro)](https://miro.com/app/board/uXjVH8KD80I=/?share_link_id=332769285692)** — los apuntes a mano de los profesores, clase por clase.
+
 📄 **[Sílabo del curso (PDF)](silabo_propedeutico_2026.pdf)** — fechas, horarios, evaluación y bibliografía. El curso se dicta del **13 de julio al 8 de agosto de 2026** (Maestría en Economía del Desarrollo, FLACSO Ecuador).
 
 ---
