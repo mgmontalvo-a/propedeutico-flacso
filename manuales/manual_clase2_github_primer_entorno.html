@@ -353,6 +353,15 @@ document.querySelectorAll('.copiar').forEach(function(btn){
     }
   });
 });
+var cerrados = [];
+window.addEventListener('beforeprint', function(){
+  cerrados = Array.prototype.filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+  cerrados.forEach(function(d){ d.open = true; });
+});
+window.addEventListener('afterprint', function(){
+  cerrados.forEach(function(d){ d.open = false; });
+  cerrados = [];
+});
 </script>
 </body>
 </html>
