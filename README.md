@@ -142,7 +142,7 @@ Sitio web: [franciscoperezm.com](https://franciscoperezm.com) · GitHub: [@franp
 **David Villamar C.** — FLACSO Ecuador
 Correo: [davillamarfl@flacso.edu.ec](mailto:davillamarfl@flacso.edu.ec)
 
-Dudas del curso: usa el foro de la asignatura en Moodle o el canal indicado en clase, no los *issues* de este repositorio.
+Dudas del curso: usa el aula virtual ([Blackboard](https://flacsosaas.blackboard.com/)) o el canal indicado en clase, no los *issues* de este repositorio.
 
 ## Cómo citar
 
