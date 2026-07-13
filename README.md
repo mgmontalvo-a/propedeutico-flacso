@@ -14,7 +14,9 @@ Curso propedéutico para estudiantes de posgrado en ciencias sociales **sin expe
 
 ## Cómo usar este repositorio
 
-Hay dos vías, y ambas están cubiertas por los manuales de la carpeta [`manuales/`](manuales/):
+Hay dos vías, y ambas están cubiertas por los manuales de la carpeta [`manuales/`](manuales/). Los manuales se leen **directamente en el navegador** (versión web, sin descargar nada) y también tienen **copia en PDF** para imprimir o consultar sin conexión:
+
+- 📖 [Manual de la clase 2 — GitHub y tu primer entorno (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase2_github_primer_entorno.html) · [PDF](manuales/manual_clase2_github_primer_entorno.pdf)
 
 ### Vía A — Google Colab (sin instalar nada)
 
@@ -85,7 +87,7 @@ Temario completo según el [sílabo](silabo_propedeutico_2026.pdf). El material 
 |:------:|-------|------|----------|
 | 1 | lun 13-jul | Sistemas numéricos y operaciones fundamentales entre conjuntos · Python y Google Colab desde cero | [`clase01_conjuntos_producto_cartesiano.ipynb`](clases/clase01_conjuntos_producto_cartesiano.ipynb) |
 | — | *en casa* | *Preparación:* instalación de VS Code, Python y Git · cuentas de Gmail y GitHub | *(por publicar)* |
-| 2 | mar 14-jul | Teoría de conjuntos y lógica proposicional · Git y GitHub en la práctica: clonar el repositorio y crear tu primer entorno virtual | [`manual_clase2_github_primer_entorno.html`](manuales/manual_clase2_github_primer_entorno.html) · [App Tablas de Verdad](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) |
+| 2 | mar 14-jul | Teoría de conjuntos y lógica proposicional · Git y GitHub en la práctica: clonar el repositorio y crear tu primer entorno virtual | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase2_github_primer_entorno.html) · [PDF](manuales/manual_clase2_github_primer_entorno.pdf) · [App Tablas de Verdad](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) |
 | 3 | mié 15-jul | Instalación y configuración del entorno Python (Anaconda, Jupyter, VS Code) · Introducción a Jupyter Notebooks | *(por publicar)* |
 | 4 | jue 16-jul | Algoritmos de programación, tipos de variables y operadores · Estructuras de datos básicas en Python | *(por publicar)* |
 | 5 | vie 17-jul | Funciones: imagen, preimagen, grafo, función compuesta y cardinalidad | *(por publicar)* |
