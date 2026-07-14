@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de instalación: VS Code, Python y Git — Propedéutico FLACSO Ecuador</title>
+<style>
+  :root{
+    --tinta:#1e2a32;
+    --tinta-suave:#5a6a74;
+    --papel:#fafaf7;
+    --carta:#ffffff;
+    --vino:#7a1e2b;
+    --vino-claro:#f7edee;
+    --sesion:#1d6b5f;          /* identidad de esta guía */
+    --sesion-claro:#edf7f4;
+    --comun:#1d6b45;
+    --alerta:#8a5a00;
+    --alerta-fondo:#fdf3dd;
+    --linea:#dcdcd4;
+    --mono:Consolas,"SF Mono",Menlo,"Courier New",monospace;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);
+       font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .pagina{max-width:860px;margin:0 auto;padding:0 22px 90px}
+  a{color:var(--vino)}
+  a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
+    outline:3px solid var(--sesion);outline-offset:2px;border-radius:3px}
+
+  header.doc{border-bottom:4px double var(--vino);padding:46px 0 26px;margin-bottom:8px}
+  .sello{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--vino);margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:600;font-size:2.15rem;line-height:1.18;margin:0 0 10px;
+     letter-spacing:-.01em}
+  .subtitulo{font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--tinta-suave);margin:0}
+  .metadatos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;padding-top:16px;
+             border-top:1px solid var(--linea);font-size:.86rem;color:var(--tinta-suave)}
+  .metadatos b{color:var(--tinta);font-weight:600}
+  mark.editar{background:#fff3bf;border:1px dashed #d9a800;padding:1px 7px;border-radius:3px;
+              font-weight:600;color:#6b5300}
+
+  h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;margin:52px 0 14px;letter-spacing:-.005em}
+  p{margin:0 0 14px}
+  .nota{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--sesion);
+        border-radius:6px;padding:15px 18px;margin:18px 0;font-size:.95rem}
+  .aviso{background:var(--alerta-fondo);border:1px solid #ecd9a8;border-left:5px solid var(--alerta);
+         border-radius:6px;padding:15px 18px;margin:18px 0;font-size:.95rem}
+  .aviso b:first-child,.nota b:first-child{display:block;margin-bottom:4px}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem;background:var(--carta)}
+  th,td{border:1px solid var(--linea);padding:10px 13px;text-align:left;vertical-align:top}
+  th{background:var(--vino-claro);font-family:var(--serif);font-weight:600}
+  td code,li code,p code{font-family:var(--mono);font-size:.86em;background:#f2f2ec;
+    padding:1px 6px;border-radius:3px}
+
+  .placa{border-radius:8px 8px 0 0;color:#fff;padding:18px 24px;margin-top:60px;background:var(--sesion)}
+  .placa .letra{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+                opacity:.85;display:block;margin-bottom:4px}
+  .placa h2{color:#fff;margin:0;font-size:1.5rem}
+  .cuerpo{background:var(--carta);border:1px solid var(--linea);border-top:none;
+          border-radius:0 0 8px 8px;padding:8px 24px 24px;border-left:5px solid var(--sesion)}
+
+  .paso{display:flex;gap:16px;padding:22px 0;border-bottom:1px dashed var(--linea)}
+  .paso:last-child{border-bottom:none}
+  .num{flex:0 0 40px;height:40px;border-radius:50%;color:#fff;font-family:var(--serif);
+       font-weight:600;font-size:1.05rem;display:flex;align-items:center;justify-content:center;
+       margin-top:2px;background:var(--sesion)}
+  .paso h3{margin:2px 0 8px;font-size:1.08rem;font-weight:700}
+  .paso ol,.paso ul{margin:6px 0 10px;padding-left:22px}
+  .paso li{margin-bottom:7px}
+  .ui{font-weight:600;background:#f2f2ec;border:1px solid var(--linea);border-radius:4px;
+      padding:0 6px;font-size:.92em;white-space:nowrap}
+  .contenido{min-width:0;flex:1}
+  .os{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#fff;
+      border-radius:3px;padding:1.5px 8px;margin-right:6px;vertical-align:1px;background:var(--tinta-suave)}
+
+  .cmd{position:relative;background:#22303a;color:#eef3f6;border-radius:6px;margin:12px 0;
+       font-family:var(--mono);font-size:.92rem;line-height:1.55}
+  .cmd pre{margin:0;padding:14px 96px 14px 16px;overflow-x:auto;white-space:pre}
+  .cmd .copiar{position:absolute;top:9px;right:9px;border:1px solid #4a5b66;background:#31424e;
+       color:#dbe6ec;font-family:var(--sans);font-size:.74rem;padding:4px 11px;border-radius:4px;cursor:pointer}
+  .cmd .copiar:hover{background:#3d5160}
+  .consola{background:#101820;color:#c9d6de;border-radius:6px;margin:12px 0;font-family:var(--mono);
+           font-size:.88rem;line-height:1.6;border:1px solid #2c3a44}
+  .consola .barra{background:#1c2831;color:#8fa3af;font-size:.72rem;letter-spacing:.12em;
+                  text-transform:uppercase;padding:6px 14px;border-radius:6px 6px 0 0}
+  .consola pre{margin:0;padding:13px 16px;overflow-x:auto}
+  .consola .tu{color:#ffd479}
+  .consola .ok{color:#7dd6a0}
+  .consola .dim{color:#6b7d88}
+
+  .captura{max-width:100%;border:1px solid var(--linea);border-radius:6px;margin:10px 0;display:block}
+  .pie-captura{font-size:.84rem;color:var(--tinta-suave);margin:-4px 0 14px}
+
+  .conceptos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  .concepto{background:var(--carta);border:1px solid var(--linea);border-top:4px solid var(--sesion);
+            border-radius:6px;padding:14px 16px;font-size:.93rem}
+  .concepto b{font-family:var(--serif);font-size:1.02rem;display:block;margin-bottom:6px}
+  @media (max-width:640px){.conceptos{grid-template-columns:1fr}}
+
+  .checklist{background:var(--carta);border:2px solid var(--comun);border-radius:8px;
+             padding:22px 26px;margin:26px 0}
+  .checklist h2{margin-top:0}
+  .checklist label{display:flex;gap:12px;align-items:flex-start;padding:9px 0;
+                   border-bottom:1px dotted var(--linea);cursor:pointer;font-size:.98rem}
+  .checklist label:last-of-type{border-bottom:none}
+  .checklist input{width:19px;height:19px;margin-top:3px;accent-color:var(--comun);flex:0 0 auto}
+
+  details{background:var(--carta);border:1px solid var(--linea);border-radius:6px;margin:10px 0;padding:0 16px}
+  summary{cursor:pointer;font-weight:600;padding:13px 0;list-style-position:inside}
+  details[open]{padding-bottom:14px}
+  details p,details ol{margin-top:6px}
+
+  footer{margin-top:64px;border-top:1px solid var(--linea);padding-top:18px;
+         font-size:.84rem;color:var(--tinta-suave)}
+
+  @media print{
+    body{background:#fff;font-size:12.5px}
+    .copiar{display:none}
+    .placa{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    details{page-break-inside:avoid}
+    a{color:var(--tinta)}
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+<header class="doc">
+  <div class="sello">Propedéutico de Matemáticas y Programación · FLACSO Ecuador</div>
+  <h1>Manual de instalación: VS&nbsp;Code, Python y Git</h1>
+  <p class="subtitulo">Prepara tu computadora para el curso — instalarás las tres herramientas de trabajo y crearás tus cuentas de Gmail y GitHub, paso a paso y sin experiencia previa.</p>
+  <div class="metadatos">
+    <span><b>Modalidad:</b> en casa, a tu ritmo</span>
+    <span><b>Complétalo:</b> antes de la clase 2</span>
+    <span><b>Tiempo estimado:</b> 30–45 minutos, con buena conexión a internet</span>
+  </div>
+</header>
+
+<!-- ================= ANTES DE EMPEZAR ================= -->
+<h2>Antes de empezar</h2>
+<p>Sigue las secciones <b>en orden, de la A a la G</b>. Cada instrucción indica si aplica a Windows (<span class="os">WIN</span>) o a Mac (<span class="os">MAC</span>); si no tiene etiqueta, aplica a ambos. Solo necesitas:</p>
+<div class="aviso">
+  <b>⚠️ Verifica que tienes:</b>
+  <ul style="margin:6px 0 0;padding-left:20px">
+    <li>Una computadora con <b>Windows 10 u 11</b>, o con <b>macOS</b> — y permiso para instalar programas en ella.</li>
+    <li>Unos <b>2 GB de espacio libre</b> en disco.</li>
+    <li>Conexión a internet estable (descargarás entre 100 y 200 MB por herramienta).</li>
+  </ul>
+</div>
+
+<!-- ================= CONCEPTOS ================= -->
+<h2>Las tres herramientas, en una frase cada una</h2>
+<div class="conceptos">
+  <div class="concepto"><b>VS&nbsp;Code</b>El editor donde escribirás y ejecutarás código: tu mesa de trabajo. Dentro de él viven la terminal (la ventana donde escribes órdenes de texto para la computadora), los notebooks (cuadernos interactivos que combinan texto y código) y las extensiones que usaremos todo el curso.</div>
+  <div class="concepto"><b>Python</b>El lenguaje de programación del curso — y el programa (intérprete) que entiende y ejecuta lo que escribes. Sirve cualquier versión 3.12 o superior.</div>
+  <div class="concepto"><b>Git</b>El sistema de control de versiones: guarda la historia de tus proyectos y te conecta con GitHub, donde viven los materiales del curso y vivirá tu propio trabajo.</div>
+</div>
+
+<!-- ================= PRÁCTICA ================= -->
+<div class="placa" id="instalacion">
+  <span class="letra">En casa · a tu ritmo</span>
+  <h2>Instalación guiada: siete secciones, en orden</h2>
+</div>
+<div class="cuerpo">
+
+  <div class="paso" id="seccion-a">
+    <div class="num">A</div>
+    <div class="contenido">
+      <h3>Instala VS&nbsp;Code</h3>
+      <ol>
+        <li>Entra a <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">code.visualstudio.com/download</a>.</li>
+        <li><span class="os">WIN</span> Descarga la versión de <b>Windows</b>, abre el archivo descargado, acepta la licencia y avanza con <span class="ui">Next</span> dejando marcadas las opciones por defecto, hasta <span class="ui">Install</span> y <span class="ui">Finish</span>.</li>
+        <li><span class="os">MAC</span> Descarga la versión de <b>macOS (Universal)</b>. Se baja un archivo <code>.zip</code>: haz doble clic para descomprimirlo y <b>arrastra la aplicación «Visual Studio Code» a la carpeta Aplicaciones</b>. Ábrela; si macOS pregunta si confías en una app descargada de internet, pulsa <span class="ui">Abrir</span>.</li>
+      </ol>
+      <p style="margin-bottom:0"><b>Verificación:</b> VS&nbsp;Code se abre y muestra su pantalla de bienvenida. Puedes cerrarlo por ahora.</p>
+    </div>
+  </div>
+
+  <div class="paso" id="seccion-b">
+    <div class="num">B</div>
+    <div class="contenido">
+      <h3>Instala Git</h3>
+      <p><span class="os">WIN</span> En Windows, Git se instala con un asistente:</p>
+      <ol>
+        <li>Entra a <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com/downloads</a> → <span class="ui">Windows</span> → descarga el instalador de 64 bits (<i>Standalone Installer</i>).</li>
+        <li>Ejecuta el archivo descargado. El asistente tiene muchas pantallas: en casi todas basta dejar lo marcado y pulsar <span class="ui">Next</span>. Solo hay <b>dos decisiones importantes</b>:</li>
+      </ol>
+      <p>La primera: cuando pregunte por el editor por defecto, elige <b>«Use Visual Studio Code as Git's default editor»</b>:</p>
+      <img class="captura" src="img/instalacion_git_editor_vscode.png" alt="Pantalla del instalador de Git: elegir Visual Studio Code como editor por defecto" width="651" loading="lazy">
+      <p>La segunda: en la pantalla del PATH — la lista de carpetas donde el sistema busca los programas —, deja la opción recomendada <b>«Git from the command line and also from 3rd-party software»</b>, que te permitirá usar <code>git</code> desde cualquier terminal:</p>
+      <img class="captura" src="img/instalacion_git_path.png" alt="Pantalla del instalador de Git: opción recomendada de PATH" width="653" loading="lazy">
+      <ol start="3">
+        <li>Sigue con <span class="ui">Next</span> en el resto de pantallas (deja lo marcado), pulsa <span class="ui">Install</span> y al terminar <span class="ui">Finish</span>.</li>
+      </ol>
+      <p><span class="os">MAC</span> En Mac no hay instalador: se usa la Terminal una sola vez.</p>
+      <ol>
+        <li>Abre la <b>Terminal</b>: pulsa <span class="ui">⌘ + Espacio</span>, escribe <code>Terminal</code> y presiona Enter.</li>
+        <li>Escribe <code>git --version</code> y presiona Enter. Si Git no está instalado, macOS te ofrecerá instalar las <b>herramientas de línea de comandos</b>: acepta con <span class="ui">Instalar</span> y espera a que termine (varios minutos).</li>
+      </ol>
+      <p><b>Verificación</b> (ambos sistemas): abre una terminal <b>nueva</b> — <span class="os">WIN</span> pulsa la tecla Windows, escribe <code>PowerShell</code> y presiona Enter · <span class="os">MAC</span> la misma Terminal de antes — y ejecuta:</p>
+      <div class="cmd"><pre>git --version</pre><button class="copiar" type="button">Copiar</button></div>
+      <div class="consola">
+        <div class="barra">Resultado esperado (el número puede variar)</div>
+        <pre><span class="tu">git --version</span>
+<span class="ok">git version 2.47.0</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso" id="seccion-c">
+    <div class="num">C</div>
+    <div class="contenido">
+      <h3>Instala Python — usa estos enlaces directos</h3>
+      <div class="aviso"><b>⚠️ <span class="os">WIN</span> No uses el botón grande de python.org</b>
+      Si entras con Windows, la página de descargas de python.org muestra un botón amarillo que dice <b>«Download Python install manager»</b>. Ese programa <b>no</b> es el que necesitas para el curso y no muestra la casilla clave de la instalación. Sáltate esa página: usa los enlaces directos de abajo, que descargan el <b>instalador clásico</b> (<i>standalone installer</i>) para Windows y para Mac.</div>
+      <ol>
+        <li><span class="os">WIN</span> Descarga directamente <a href="https://www.python.org/ftp/python/3.14.6/python-3.14.6-amd64.exe" target="_blank" rel="noopener"><b>python-3.14.6-amd64.exe</b></a> (29&nbsp;MB) y ejecútalo.</li>
+        <li><span class="os">WIN</span> En la primera pantalla del instalador, <b>antes de continuar</b>, marca la casilla de la parte inferior: <span class="ui">Add python.exe to PATH</span>. Luego pulsa <span class="ui">Install Now</span> y, al terminar, <span class="ui">Close</span>.</li>
+        <li><span class="os">MAC</span> Descarga directamente <a href="https://www.python.org/ftp/python/3.14.6/python-3.14.6-macos11.pkg" target="_blank" rel="noopener"><b>python-3.14.6-macos11.pkg</b></a> (75&nbsp;MB), ábrelo y sigue el asistente (<span class="ui">Continuar</span> → <span class="ui">Instalar</span>).</li>
+        <li><span class="os">MAC</span> Al terminar se abre una carpeta: haz doble clic en <span class="ui">Install Certificates.command</span> y deja que corra hasta el final (instala los certificados que Python usa para conectarse a internet).</li>
+      </ol>
+      <p><b>Verificación:</b> abre una terminal <b>nueva</b> (o la de VS&nbsp;Code: <span class="ui">Terminal → New Terminal</span>) y ejecuta <b>solo el comando de tu sistema</b>:</p>
+      <p style="margin:10px 0 4px"><span class="os">WIN</span> En Windows:</p>
+      <div class="cmd"><pre>python --version</pre><button class="copiar" type="button">Copiar</button></div>
+      <p style="margin:10px 0 4px"><span class="os">MAC</span> En Mac (con el 3 al final):</p>
+      <div class="cmd"><pre>python3 --version</pre><button class="copiar" type="button">Copiar</button></div>
+      <div class="consola">
+        <div class="barra">Resultado esperado (en Mac el comando es python3)</div>
+        <pre><span class="tu">python --version</span>
+<span class="ok">Python 3.14.6</span></pre>
+      </div>
+      <div class="nota"><b>💡 ¿Y si estos enlaces cambian?</b>
+      Para el curso sirve cualquier Python <b>3.12 o superior</b>. Si algún día los enlaces directos dejan de funcionar, entra a <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a>. <span class="os">WIN</span> Busca el enlace pequeño <i>«Or get the standalone installer for Python 3.x.x»</i> — ese, no el botón grande. <span class="os">MAC</span> El botón grande <span class="ui">Download Python 3.x.x</span> sí descarga el instalador clásico (<code>.pkg</code>): úsalo con confianza.</div>
+    </div>
+  </div>
+
+  <div class="paso" id="seccion-d">
+    <div class="num">D</div>
+    <div class="contenido">
+      <h3>Instala las extensiones de VS&nbsp;Code: Python y Jupyter</h3>
+      <ol>
+        <li>Abre VS&nbsp;Code y pulsa el icono de <b>Extensiones</b> en la barra izquierda (cuatro cuadraditos), o usa <span class="ui">Ctrl+Shift+X</span> (Windows) / <span class="ui">⇧⌘X</span> (Mac).</li>
+        <li>En el buscador escribe <code>Python</code>, elige la extensión <b>Python</b> de <b>Microsoft</b> (la primera, con millones de descargas) y pulsa <span class="ui">Install</span>.</li>
+        <li>Busca ahora <code>Jupyter</code>, elige la extensión <b>Jupyter</b> de <b>Microsoft</b> y pulsa <span class="ui">Install</span>. Es la que permite abrir <b>notebooks</b>: los cuadernos interactivos que combinan texto y código, donde trabajaremos en las clases.</li>
+      </ol>
+      <p style="margin-bottom:0"><b>Verificación:</b> en el panel de Extensiones, la pestaña <span class="ui">Installed</span> muestra Python y Jupyter (con algunas extensiones compañeras que se instalan solas, como Pylance — es normal).</p>
+    </div>
+  </div>
+
+  <div class="paso" id="seccion-e">
+    <div class="num">E</div>
+    <div class="contenido">
+      <h3>Crea tu cuenta de Gmail (si aún no tienes una)</h3>
+      <ol>
+        <li>Entra a <a href="https://accounts.google.com/signup" target="_blank" rel="noopener">accounts.google.com/signup</a> y elige <span class="ui">Para mi uso personal</span>.</li>
+        <li>Escribe tu nombre y apellidos, tu fecha de nacimiento y género, y avanza con <span class="ui">Siguiente</span>.</li>
+        <li>Elige una de las direcciones que Google te sugiere, o pulsa <span class="ui">Crear tu propia dirección de Gmail</span> y escribe la que prefieras. Define una contraseña segura que recuerdes.</li>
+        <li>Si Google lo pide, verifica con tu número de teléfono (te llega un código por SMS). Acepta las condiciones con <span class="ui">Acepto</span>.</li>
+      </ol>
+      <p style="margin-bottom:0">Esta cuenta es la que usarás para <b>Google Colab</b> — la herramienta en la nube con la que también se sigue el curso — y para registrarte en GitHub en la siguiente sección.</p>
+    </div>
+  </div>
+
+  <div class="paso" id="seccion-f">
+    <div class="num">F</div>
+    <div class="contenido">
+      <h3>Crea tu cuenta de GitHub</h3>
+      <ol>
+        <li>Entra a <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> e ingresa tu correo (puede ser el Gmail de la sección E). Pulsa <span class="ui">Continue</span>.</li>
+        <li>Crea una contraseña que no uses en otra web y anótala.</li>
+        <li>Elige un <b>nombre de usuario profesional</b>, tipo <code>nombre-apellido</code> — será público y te acompañará toda la maestría.</li>
+        <li>Resuelve la verificación (<span class="ui">Verify</span>) y escribe el <b>código que llega a tu correo</b>.</li>
+        <li>Inicia sesión (<span class="ui">Sign in</span>); si GitHub hace preguntas sobre tu perfil, responde y elige el plan <b>Free</b>.</li>
+      </ol>
+      <p style="margin-bottom:0"><b>Verificación:</b> revisa tu correo y confirma que aparece como <b>verificado</b> en GitHub (si no llegó el código, revisa la carpeta de spam). Al pulsar tu avatar (arriba a la derecha) → <span class="ui">Your profile</span>, ves tu página pública: ahí vivirá tu portafolio.</p>
+    </div>
+  </div>
+
+  <div class="paso" id="seccion-g">
+    <div class="num">G</div>
+    <div class="contenido">
+      <h3>Preséntate con Git: tu identidad</h3>
+      <p>Git firma cada cambio que guardes con un nombre y un correo. Configúralos <b>una sola vez</b>, en cualquier terminal (la de VS&nbsp;Code sirve). Al pegar los comandos, <b>sustituye</b> <code>Nombre Apellido</code> por tu nombre real y <code>tu-correo@ejemplo.com</code> por <b>el mismo correo de tu cuenta de GitHub</b>, conservando las comillas:</p>
+      <div class="cmd"><pre>git config --global user.name "Nombre Apellido"
+git config --global user.email "tu-correo@ejemplo.com"</pre><button class="copiar" type="button">Copiar</button></div>
+      <p><b>Verificación:</b> este comando debe mostrar las dos líneas con tus datos:</p>
+      <div class="cmd"><pre>git config --global --list</pre><button class="copiar" type="button">Copiar</button></div>
+      <div class="consola">
+        <div class="barra">Resultado esperado — con tus datos reales, no los de ejemplo</div>
+        <pre><span class="tu">git config --global --list</span>
+<span class="ok">user.name=María Torres
+user.email=maria.torres@gmail.com</span></pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= CHECKLIST ================= -->
+<div class="checklist">
+  <h2>✅ Todo listo cuando…</h2>
+  <p>Marca cada punto solo si lo comprobaste en tu computadora:</p>
+  <label><input type="checkbox"> <code>git --version</code> responde con un número de versión.</label>
+  <label><input type="checkbox"> <code>python --version</code> (Windows) o <code>python3 --version</code> (Mac) responde <b>3.12 o superior</b>.</label>
+  <label><input type="checkbox"> VS&nbsp;Code se abre y en Extensiones → Installed aparecen <b>Python</b> y <b>Jupyter</b>.</label>
+  <label><input type="checkbox"> <code>git config --global --list</code> muestra mi nombre y mi correo.</label>
+  <label><input type="checkbox"> Puedo iniciar sesión en Gmail y en GitHub, y mi correo de GitHub está verificado.</label>
+</div>
+
+<!-- ================= PROBLEMAS ================= -->
+<h2 id="problemas">Si algo se atasca</h2>
+
+<details>
+  <summary>P1 · <span class="os">WIN</span> Escribo <code>python</code> y se abre la Microsoft Store</summary>
+  <p>Windows trae un acceso directo falso a Python que abre la tienda. Pasa cuando Python no está instalado o se instaló <b>sin marcar</b> la casilla <span class="ui">Add python.exe to PATH</span>. Vuelve a ejecutar el instalador de la sección C y fíjate en qué pantalla aparece:</p>
+  <ul>
+    <li>Si muestra la casilla <span class="ui">Add python.exe to PATH</span> (Python no estaba instalado): márcala y pulsa <span class="ui">Install Now</span>.</li>
+    <li>Si muestra <span class="ui">Modify / Repair / Uninstall</span> (Python ya estaba instalado): elige <span class="ui">Modify</span> → <span class="ui">Next</span> → en <i>Advanced Options</i> marca <span class="ui">Add Python to environment variables</span> → <span class="ui">Install</span>.</li>
+  </ul>
+  <p>Al terminar, abre una terminal <b>nueva</b> y repite <code>python --version</code>.</p>
+</details>
+
+<details>
+  <summary>P2 · “python” o “git” no se reconoce como comando</summary>
+  <p>Las terminales abiertas <em>antes</em> de instalar no se enteran de los programas nuevos: cierra <b>todas</b> las terminales (y VS&nbsp;Code completo) y vuelve a abrir. Si <code>python</code> sigue sin responder en Windows, revisa P1.</p>
+</details>
+
+<details>
+  <summary>P3 · <span class="os">MAC</span> <code>python --version</code> dice “command not found” o muestra 2.7</summary>
+  <p>En Mac el comando del Python moderno es <code>python3</code> (con el 3). Usa siempre <code>python3 --version</code>. Si también falla, repite la sección C y verifica en una terminal nueva.</p>
+</details>
+
+<details>
+  <summary>P4 · Descargué el “Python install manager” por error</summary>
+  <p>No pasa nada: desinstálalo (<span class="os">WIN</span> Configuración → Aplicaciones → Aplicaciones instaladas → <i>Python install manager</i> → Desinstalar) y usa el <b>enlace directo</b> de la sección C para instalar el Python clásico, marcando la casilla del PATH.</p>
+</details>
+
+<details>
+  <summary>P5 · <span class="os">WIN</span> “la ejecución de scripts está deshabilitada en este sistema”</summary>
+  <p>Es una protección de PowerShell que aparecerá al activar entornos virtuales (clase 2). Ejecuta en la terminal:</p>
+  <div class="cmd"><pre>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</pre><button class="copiar" type="button">Copiar</button></div>
+  <p>Responde <code>S</code> (o <code>Y</code>) si pregunta, cierra esa terminal y abre una nueva.</p>
+</details>
+
+<details>
+  <summary>P6 · <span class="os">MAC</span> “No se puede abrir…” / “Apple no pudo verificar que la app no contiene malware”</summary>
+  <p>Es Gatekeeper, la protección de macOS. Cierra el aviso y ve a <span class="ui">Ajustes del Sistema → Privacidad y seguridad</span>; baja hasta el mensaje sobre la app bloqueada y pulsa <span class="ui">Abrir de todos modos</span> (te pedirá tu contraseña). Solo hace falta la primera vez. En macOS 14 o anterior también sirve el atajo: clic derecho (o <span class="ui">Ctrl + clic</span>) sobre la aplicación → <span class="ui">Abrir</span> → <span class="ui">Abrir</span>.</p>
+</details>
+
+<details>
+  <summary>P7 · No me llega el código de verificación de GitHub</summary>
+  <p>Revisa la carpeta de <b>spam / correo no deseado</b> y espera un par de minutos. Puedes pedir un código nuevo desde la misma página. Si usaste un correo institucional y no llega, prueba con tu Gmail.</p>
+</details>
+
+<!-- ================= PUENTE ================= -->
+<h2>Qué sigue</h2>
+<p>Con las tres herramientas instaladas y tus cuentas listas, tu computadora ya es un laboratorio. El siguiente paso es de la clase 2: clonar el repositorio del curso y crear tu primer entorno virtual — todo está en el <a href="manual_clase2_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2 — GitHub y tu primer entorno</b></a>.</p>
+
+<footer>
+  Propedéutico de Matemáticas y Programación · FLACSO Ecuador — Manual de instalación, versión julio 2026.<br>
+  Es la primera guía de la serie: le siguen el <a href="manual_clase2_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a> (clonar el repositorio y crear tu entorno) y el <a href="manual_clase3_tu_propio_repositorio.html" target="_blank" rel="noopener"><b>Manual de la clase 3</b></a> (tu propio repositorio).
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.copiar').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var texto = btn.parentElement.querySelector('pre').textContent;
+    function listo(){ btn.textContent = 'Copiado ✓'; setTimeout(function(){ btn.textContent = 'Copiar'; }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(listo);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = texto; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); listo(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+});
+var cerrados = [];
+window.addEventListener('beforeprint', function(){
+  cerrados = Array.prototype.filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+  cerrados.forEach(function(d){ d.open = true; });
+});
+window.addEventListener('afterprint', function(){
+  cerrados.forEach(function(d){ d.open = false; });
+  cerrados = [];
+});
+</script>
+</body>
+</html>

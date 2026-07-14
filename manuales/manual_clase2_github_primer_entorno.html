@@ -145,7 +145,7 @@
 <div class="aviso">
   <b>⚠️ Verifica que ya tienes:</b>
   <ul style="margin:6px 0 0;padding-left:20px">
-    <li><b>Las tres herramientas instaladas y verificadas</b> — VS&nbsp;Code, Python y Git, con las extensiones <b>Python</b> y <b>Jupyter</b> y tu identidad configurada en Git. Todo esto está, paso a paso, en el <a href="manual_instalacion_vscode.pdf"><b>Manual de instalación</b></a> (también disponible en el aula virtual, <a href="https://flacsosaas.blackboard.com/" target="_blank" rel="noopener">Blackboard</a>).</li>
+    <li><b>Las tres herramientas instaladas y verificadas</b> — VS&nbsp;Code, Python y Git, con las extensiones <b>Python</b> y <b>Jupyter</b> y tu identidad configurada en Git. Todo esto está, paso a paso, en el <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a> (también disponible en el aula virtual, <a href="https://flacsosaas.blackboard.com/" target="_blank" rel="noopener">Blackboard</a>).</li>
     <li><b>Una cuenta de Gmail activa</b> — la misma que usas para Google Colab. Si no tienes: <a href="https://accounts.google.com/signup" target="_blank" rel="noopener">accounts.google.com/signup</a>.</li>
     <li><b>Una cuenta de GitHub creada y con el correo verificado</b> — puedes registrarte con tu Gmail. Si no tienes: <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> (elige un nombre de usuario profesional, tipo <code>nombre-apellido</code>, y anota tu contraseña).</li>
   </ul>
@@ -186,7 +186,7 @@
     <div class="contenido">
       <h3>Copia la dirección del repositorio del curso</h3>
       <ol>
-        <li>Entra al repositorio del curso: <a href="https://github.com/franperezec/propedeutico-flacso">github.com/franperezec/propedeutico-flacso</a>.</li>
+        <li>Entra al repositorio del curso: <a href="https://github.com/franperezec/propedeutico-flacso" target="_blank" rel="noopener">github.com/franperezec/propedeutico-flacso</a>.</li>
         <li>Pulsa el botón verde <span class="ui">&lt;&gt; Code</span>, verifica que esté seleccionada la pestaña <span class="ui">HTTPS</span> y pulsa el icono de copiar junto a la dirección (termina en <code>.git</code>).</li>
       </ol>
       <p style="margin-bottom:0">La dirección tiene siempre la forma <code>https://github.com/usuario/repositorio.git</code>. Ese mismo botón sirve para clonar <em>cualquier</em> repositorio público de GitHub.</p>
@@ -235,6 +235,8 @@ Resolving deltas: 100% (31/31), done.</span></pre>
         <div class="barra">Terminal — entorno activo</div>
         <pre><span class="ok">(.venv)</span> <span class="dim">~/Documentos/propedeutico/repositorio&gt;</span></pre>
       </div>
+      <div class="nota"><b>💡 Activar y desactivar el entorno a mano</b>
+      Las terminales nuevas de VS&nbsp;Code activan el entorno solas. Pero si abres una terminal fuera de VS&nbsp;Code, o el <code>(.venv)</code> no aparece, actívalo tú desde la carpeta del repositorio — <span class="os">WIN</span> <code>.venv\Scripts\activate</code> · <span class="os">MAC</span> <code>source .venv/bin/activate</code> — y para salir del entorno, en ambos sistemas: <code>deactivate</code>. Si Windows responde «la ejecución de scripts está deshabilitada», la solución está en P2.</div>
     </div>
   </div>
 
@@ -244,7 +246,7 @@ Resolving deltas: 100% (31/31), done.</span></pre>
       <h3>Instala las librerías dentro del entorno</h3>
       <p>Si el paso anterior no instaló nada automáticamente (no había <code>requirements.txt</code>), instala lo mínimo del curso. Con el <code>(.venv)</code> visible, este comando es <b>el mismo en Windows y Mac</b>:</p>
       <div class="cmd"><pre>python -m pip install ipykernel matplotlib</pre><button class="copiar" type="button">Copiar</button></div>
-      <p style="margin-bottom:0"><b>¿Otra vez, si ya lo hice en el manual de instalación?</b> Sí, y es a propósito: aquello se instaló en el Python “general” de tu máquina; esto se instala <em>dentro de la caja del proyecto</em>. Cada entorno lleva sus propias herramientas — por eso los proyectos no se estorban entre sí.</p>
+      <p style="margin-bottom:0"><b>¿Por qué “dentro del entorno”?</b> Con el <code>(.venv)</code> activo, las librerías se instalan <em>dentro de la caja del proyecto</em>, no en el Python “general” de tu máquina. Cada entorno lleva sus propias herramientas — por eso los proyectos no se estorban entre sí.</p>
     </div>
   </div>
 
@@ -304,7 +306,7 @@ Resolving deltas: 100% (31/31), done.</span></pre>
 
 <details>
   <summary>P3 · No aparece la opción “Python: Create Environment”</summary>
-  <p>Falta la extensión <b>Python</b> de Microsoft (paso C2 del Manual de instalación) o VS&nbsp;Code necesita reiniciarse tras instalarla. Instálala desde el panel de extensiones, cierra y vuelve a abrir VS&nbsp;Code.</p>
+  <p>Falta la extensión <b>Python</b> de Microsoft (sección D del <a href="manual_instalacion_vscode.html#seccion-d" target="_blank" rel="noopener">Manual de instalación</a>) o VS&nbsp;Code necesita reiniciarse tras instalarla. Instálala desde el panel de extensiones, cierra y vuelve a abrir VS&nbsp;Code.</p>
 </details>
 
 <details>
@@ -329,11 +331,11 @@ Resolving deltas: 100% (31/31), done.</span></pre>
 
 <!-- ================= PUENTE ================= -->
 <h2>Qué sigue</h2>
-<p>Hoy <em>recibiste</em> código: clonaste un repositorio ajeno y montaste tu laboratorio local. En la próxima sesión harás el camino inverso: crear <b>tu propio repositorio</b>, guardarle cambios con <code>git add</code> y <code>git commit</code>, y publicarlos en tu GitHub con <code>git push</code> — tu portafolio público empieza ahí. El paso a paso completo ya está publicado en el <a href="manual_clase3_tu_propio_repositorio.html"><b>Manual de la clase 3 — Tu propio repositorio en GitHub</b></a>.</p>
+<p>Hoy <em>recibiste</em> código: clonaste un repositorio ajeno y montaste tu laboratorio local. En la próxima sesión harás el camino inverso: crear <b>tu propio repositorio</b>, guardarle cambios con <code>git add</code> y <code>git commit</code>, y publicarlos en tu GitHub con <code>git push</code> — tu portafolio público empieza ahí. El paso a paso completo ya está publicado en el <a href="manual_clase3_tu_propio_repositorio.html" target="_blank" rel="noopener"><b>Manual de la clase 3 — Tu propio repositorio en GitHub</b></a>.</p>
 
 <footer>
   Propedéutico de Matemáticas y Programación · FLACSO Ecuador — Manual de sesión: GitHub y primer entorno, versión julio 2026.<br>
-  Complementa al <a href="manual_instalacion_vscode.pdf"><b>Manual de instalación</b></a> (VS&nbsp;Code, Python y Git), que contiene todos los pasos previos y su solución de problemas.
+  Complementa al <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a> (VS&nbsp;Code, Python y Git), que contiene todos los pasos previos y su solución de problemas.
 </footer>
 
 </div>

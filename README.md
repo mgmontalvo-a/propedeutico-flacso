@@ -20,7 +20,7 @@ Curso propedéutico para estudiantes de posgrado en ciencias sociales **sin expe
 
 Hay dos vías, y ambas están cubiertas por los manuales de la carpeta [`manuales/`](manuales/), pensados para leerse **directamente en el navegador** o descargarse en **PDF** para imprimir o consultar sin conexión:
 
-- 🛠️ [Manual de instalación — VS Code, Python y Git (PDF)](manuales/manual_instalacion_vscode.pdf) — complétalo **antes** de la clase 2
+- 🛠️ [Manual de instalación — VS Code, Python y Git (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) · [PDF](manuales/manual_instalacion_vscode.pdf) — complétalo **antes** de la clase 2
 - 📖 [Manual de la clase 2 — GitHub y tu primer entorno (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase2_github_primer_entorno.html) · [PDF](manuales/manual_clase2_github_primer_entorno.pdf)
 - 📖 [Manual de la clase 3 — Tu propio repositorio en GitHub (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase3_tu_propio_repositorio.html) · [PDF](manuales/manual_clase3_tu_propio_repositorio.pdf)
 
@@ -34,7 +34,7 @@ Cada notebook de la carpeta [`clases/`](clases/) puede abrirse directamente en C
 
 ### Vía B — Trabajo local (VS Code + entorno virtual)
 
-Requiere haber completado el [**Manual de instalación**](manuales/manual_instalacion_vscode.pdf) (VS Code, Python 3.12+ y Git). Luego, en la terminal:
+Requiere haber completado el [**Manual de instalación**](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) (VS Code, Python 3.12+ y Git). Luego, en la terminal:
 
 ```bash
 # 1. Clonar el repositorio
@@ -73,7 +73,7 @@ propedeutico-flacso/
 ├── clases/                        # Notebooks de cada sesión (patrón «Yo hago / Tú haces»)
 │   └── clase01_conjuntos_producto_cartesiano.ipynb
 ├── manuales/                      # Guías paso a paso para preparar tu equipo
-│   ├── manual_instalacion_vscode.pdf
+│   ├── manual_instalacion_vscode.html
 │   ├── manual_clase2_github_primer_entorno.html
 │   └── manual_clase3_tu_propio_repositorio.html
 ├── aplicaciones/                  # Índice de aplicaciones web interactivas del curso
@@ -94,7 +94,7 @@ Temario completo según el [sílabo](silabo_propedeutico_2026.pdf). El material 
 | Sesión | Fecha | Tema | Material |
 |:------:|-------|------|----------|
 | 1 | lun 13-jul | Sistemas numéricos y operaciones fundamentales entre conjuntos · Python y Google Colab desde cero | [`clase01_conjuntos_producto_cartesiano.ipynb`](clases/clase01_conjuntos_producto_cartesiano.ipynb) |
-| — | *en casa* | *Preparación:* instalación de VS Code, Python y Git · cuentas de Gmail y GitHub | [Manual de instalación (PDF)](manuales/manual_instalacion_vscode.pdf) |
+| — | *en casa* | *Preparación:* instalación de VS Code, Python y Git · cuentas de Gmail y GitHub | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) · [PDF](manuales/manual_instalacion_vscode.pdf) |
 | 2 | mar 14-jul | Teoría de conjuntos y lógica proposicional · Git y GitHub en la práctica: clonar el repositorio y crear tu primer entorno virtual | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase2_github_primer_entorno.html) · [PDF](manuales/manual_clase2_github_primer_entorno.pdf) · [App Tablas de Verdad](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) |
 | 3 | mié 15-jul | Instalación y configuración del entorno Python (Anaconda, Jupyter, VS Code) · Introducción a Jupyter Notebooks | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase3_tu_propio_repositorio.html) · [PDF](manuales/manual_clase3_tu_propio_repositorio.pdf) |
 | 4 | jue 16-jul | Algoritmos de programación, tipos de variables y operadores · Estructuras de datos básicas en Python | *(por publicar)* |
@@ -136,7 +136,7 @@ Cada sesión sigue el patrón **«Yo hago / Tú haces»**: primero el docente ej
 
 ## Requisitos previos
 
-Ninguno de programación. Para la Vía A basta una cuenta de Google (Gmail); para la Vía B, seguir el [Manual de instalación](manuales/manual_instalacion_vscode.pdf) y tener una cuenta de GitHub verificada. Cualquier Python **3.12 o superior** sirve.
+Ninguno de programación. Para la Vía A basta una cuenta de Google (Gmail); para la Vía B, seguir el [Manual de instalación](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) y tener una cuenta de GitHub verificada. Cualquier Python **3.12 o superior** sirve.
 
 ---
 
